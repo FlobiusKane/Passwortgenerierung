@@ -1,0 +1,36 @@
+Gruppenübung Referat:
+1.	User kann verschiedene Zusätze aktivieren bzw. deaktivieren (Sonderzeichen, Groß- und Kleinschreibung, Zahlen).
+2.	Bedingungsüberdeckung: Jede Bedingung wird mind. 1xWAHR und 1xFALSCH ausgewertet
+3.	Aktivitätsdiagramm (oder Sequenzdiagramm)
+
+Aufgabe 1:
+Gültige Äquivalenz Klassen: Zeichen von 1-12 (12 vorgegeben und Regler an der Seite erlaubt nur höhere Werte aber manuelle Eingabe für Weniger als 12 aber mehr als 0 gibt noch einen Output)
+Ungültige Äquivalenz Klassen: Zeichenläge 0 oder negativ
+
+Aufgabe 2:
+Testfälle für gültige Äquivalenzklassen: 
+1.	User geht auf die Applikation und verändert die Länge des Passworts nicht und wählt ein Passwort aus
+
+2.	User geht auf die Applikation und verändert die Länge des Passworts auf weniger als 12 und wählt ein Passwort aus
+
+3.	User geht auf die Applikation und verändert die Länge des Passworts auf mehr als 12 und wählt ein Passwort aus
+
+Testfälle für ungültige Äquivalenzklassen:
+1.	User geht auf die Applikation und verändert die Länge des Passworts auf 0 und wählt ein Passwort aus (Es gibt keine Ausgabe)
+2.	User geht auf die Applikation und verändert die Länge des Passworts auf weniger als 0 und wählt ein Passwort aus (Es gibt keine Ausgabe)
+
+Aufgabe 3:
+Konkrete Eingabedaten:
+Gültige Äquivalente Klassen:
+1.	User ändert nichts.
+2.	User gibt 7 als Länge ein.
+3.	User gibt 18 als Länge ein.
+4.	(erweitert) User gibt 1 als länge ein.
+
+Ungültige Äquivalente Klassen:
+1.	User gibt 0 als Länge ein.
+2.	User gibt -6 als Länge ein.
+Aufgabe 4:
+Grenzen der Äquivalenzklassen:
+Gültige: 1 - Infinity
+Ungültige: -Infinity - 0
