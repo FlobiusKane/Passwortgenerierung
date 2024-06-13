@@ -1,0 +1,12 @@
+Software: Eine Software zur individuellen Passworterstellung 
+Anforderungen:
+Das Passwort besteht aus min 12 Zeichen mit Sonderzeichen, Groß- und Kleinschreibung und Zahlen.
+Bei der Passworterstellung hat der User die Möglichkeit verschiedene Zeichenarten auszuwählen.
+Bei der Passworterstellung hat der User die Möglichkeit verschiedene Passwortrichtlinien auszuwählen (Komplexität, Länge ab 12 Zeichen ...)
+Der User bekommt einen klaren und einfachen Workflow zur Passwortgenerierung
+Bei der Software wird ein sicherer Zufallsgenerator programmiert und verwendet
+
+Nicht enthalten:
+Keine Anmeldemaske
+Kein Admin Account
+html, css, javaskript
