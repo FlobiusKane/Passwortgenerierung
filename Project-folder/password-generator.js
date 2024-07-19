@@ -1,4 +1,3 @@
-// password-generator.js
 function generatePassword(length, useUppercase, useLowercase, useNumbers, useSpecial) {
     const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
