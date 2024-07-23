@@ -52,15 +52,32 @@
         button:hover {
             background: #0056b3;
         }
-        .output {
+        .output-container {
+            display: flex;
+            justify-content: center;
             margin-top: 20px;
+        }
+        .output {
             padding: 10px;
             background: #e9ecef;
             border-radius: 5px;
             text-align: center;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            display: inline-block;
+            cursor: pointer;
+            min-width: 12ch;
+        }
+        .output:hover {
+            background: #d4d4d4;
         }
         .error {
             color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .success {
+            color: green;
             margin-top: 10px;
             text-align: center;
         }
@@ -76,13 +93,16 @@
         <div class="form-group">
             <label>Zeichenarten:</label>
             <input type="checkbox" id="uppercase" name="uppercase" checked> Großbuchstaben<br>
-            <input type="checkbox" id="lowercase" name="lowercase" > Kleinbuchstaben<br>
-            <input type="checkbox" id="numbers" name="numbers" > Zahlen<br>
-            <input type="checkbox" id="special" name="special" > Sonderzeichen<br>
+            <input type="checkbox" id="lowercase" name="lowercase" checked> Kleinbuchstaben<br>
+            <input type="checkbox" id="numbers" name="numbers" checked> Zahlen<br>
+            <input type="checkbox" id="special" name="special" checked> Sonderzeichen<br>
         </div>
         <button onclick="generate()">Passwort generieren</button>
-        <div class="output" id="output"></div>
+        <div class="output-container">
+            <div class="output" id="output" onclick="copyToClipboard()"></div>
+        </div>
         <div class="error" id="error"></div>
+        <div class="success" id="success"></div>
     </div>
 
     <script src="password-generator.js"></script>
@@ -94,7 +114,10 @@
             const useNumbers = document.getElementById('numbers').checked;
             const useSpecial = document.getElementById('special').checked;
             const errorDiv = document.getElementById('error');
+            const successDiv = document.getElementById('success');
+            const outputDiv = document.getElementById('output');
             errorDiv.textContent = '';
+            successDiv.textContent = '';
 
             if (length < 12 || length > 40) {
                 errorDiv.textContent = 'Die Länge muss zwischen 12 und 40 Zeichen liegen.';
@@ -107,7 +130,22 @@
             }
 
             const password = generatePassword(length, useUppercase, useLowercase, useNumbers, useSpecial);
-            document.getElementById('output').textContent = password;
+            outputDiv.textContent = password;
+            outputDiv.style.width = `${Math.max(12, password.length)}ch`;
+        }
+
+        function copyToClipboard() {
+            const outputDiv = document.getElementById('output');
+            const password = outputDiv.textContent;
+            const successDiv = document.getElementById('success');
+
+            if (password) {
+                navigator.clipboard.writeText(password).then(() => {
+                    successDiv.textContent = 'Passwort kopiert!';
+                }).catch(err => {
+                    alert('Fehler beim Kopieren des Passworts: ' + err);
+                });
+            }
         }
     </script>
 </body>
