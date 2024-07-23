@@ -59,6 +59,11 @@
             border-radius: 5px;
             text-align: center;
         }
+        .error {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -77,23 +82,29 @@
         </div>
         <button onclick="generate()">Passwort generieren</button>
         <div class="output" id="output"></div>
+        <div class="error" id="error"></div>
     </div>
 
     <script src="password-generator.js"></script>
     <script>
         function generate() {
-            let length = document.getElementById('length').value;
+            const length = document.getElementById('length').value;
             const useUppercase = document.getElementById('uppercase').checked;
             const useLowercase = document.getElementById('lowercase').checked;
             const useNumbers = document.getElementById('numbers').checked;
             const useSpecial = document.getElementById('special').checked;
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = '';
 
             if (length < 12 || length > 40) {
-                alert('Die Länge muss zwischen 12 und 40 Zeichen liegen.');
+                errorDiv.textContent = 'Die Länge muss zwischen 12 und 40 Zeichen liegen.';
                 return;
             }
 
-            length = Math.max(12, Math.min(length, 40));
+            if (!useUppercase && !useLowercase && !useNumbers && !useSpecial) {
+                errorDiv.textContent = 'Sie müssen mindestens eine Zeichenart auswählen.';
+                return;
+            }
 
             const password = generatePassword(length, useUppercase, useLowercase, useNumbers, useSpecial);
             document.getElementById('output').textContent = password;
